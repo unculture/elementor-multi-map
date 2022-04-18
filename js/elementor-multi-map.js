@@ -29,10 +29,9 @@ function _elementorMultiMapInit (instanceData) {
   );
   if (instanceData.pins && instanceData.pins.length > 0) {
     var bounds = new google.maps.LatLngBounds();
+    var infowindow = new google.maps.InfoWindow({
+    });
     instanceData.pins.forEach(function(pin) {
-      var infowindow = new google.maps.InfoWindow({
-        content: pin.html,
-      });
 
       var marker = new google.maps.Marker({
         position: {lat: pin.lat, lng: pin.lng},
@@ -43,6 +42,7 @@ function _elementorMultiMapInit (instanceData) {
       bounds.extend( marker.getPosition() );
 
       marker.addListener("click", () => {
+        infowindow.setContent(pin.html)
         infowindow.open({
           anchor: marker,
           map,

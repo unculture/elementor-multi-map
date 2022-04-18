@@ -33,13 +33,9 @@
 .no-decoration-on-hover:hover {
     text-decoration:none !important;
 }
-.elementorMultiMapDiv .gm-style .gm-style-iw-c {
-    padding: 0 !important;
-}
 .elementorMultiMapInfoWindowWrapper {
     width: 250px;
     max-width: 100%;
-    padding: 14px;
 }
 .elementorMultiMapInfoWindowImageWrapper {
     position:relative;
