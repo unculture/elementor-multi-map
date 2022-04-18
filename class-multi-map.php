@@ -276,8 +276,31 @@ EOT;
     [ $instanceId, $json, $aspectRatioWidth, $aspectRatioHeight ] = $this->getRenderVariables();
 
     echo <<<EOT
-    <div style="position:relative;height:0;padding-top:calc($aspectRatioHeight / $aspectRatioWidth * 100%);">
-      <div style="position:absolute;top:0;left:0;width:100%;height: 100%;" id="elementorMultiMap$instanceId"></div>
+    <style>
+    .elementMultiMapDivWrapper {
+      position:relative;
+      height:0;
+      padding-top:calc($aspectRatioHeight / $aspectRatioWidth * 100%);
+    }
+    .elementMultiMapDiv {
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height: 100%;
+    }
+    @media only screen and (max-width: 600px) {
+      /** On small screens override aspect ratio settings to make the map taller **/
+      .elementMultiMapDivWrapper {
+        position:relative;
+        height:0;
+        padding-top:calc(16 / 9 * 100%);
+      }
+    }
+    
+    </style>
+    <div class="elementMultiMapDivWrapper">
+      <div class="elementMultiMapDiv" id="elementorMultiMap$instanceId"></div>
     </div>
     <script>
       if (!window.elementorMultiMapInit) {
