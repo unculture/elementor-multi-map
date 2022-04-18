@@ -34,8 +34,8 @@
     text-decoration:none !important;
 }
 .elementorMultiMapInfoWindowWrapper {
-    width: 250px;
-    max-width: 100%;
+    width: 248px;
+    padding-left: 6px;
 }
 .elementorMultiMapInfoWindowImageWrapper {
     position:relative;
@@ -64,7 +64,7 @@
     font-size: 16px;
     font-weight: 400;
     color: rgb(0, 34, 51);
-    margin-bottom: 0;
+    margin-bottom: 8px;
 }
 @media only screen and (max-width: 400px) {
     .elementorMultiMapInfoWindowName {

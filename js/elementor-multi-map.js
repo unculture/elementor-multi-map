@@ -30,7 +30,10 @@ function _elementorMultiMapInit (instanceData) {
   if (instanceData.pins && instanceData.pins.length > 0) {
     var bounds = new google.maps.LatLngBounds();
     var infowindow = new google.maps.InfoWindow({
+      minWidth: 280,
+      maxWidth: 280,
     });
+
     instanceData.pins.forEach(function(pin) {
 
       var marker = new google.maps.Marker({
