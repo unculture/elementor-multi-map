@@ -279,12 +279,12 @@ EOT;
 
     echo <<<EOT
     <style>
-    .elementMultiMapDivWrapper {
+    .elementorMultiMapDivWrapper {
       padding-top:calc($aspectRatioHeight / $aspectRatioWidth * 100%);
     }
     </style>
-    <div class="elementMultiMapDivWrapper">
-      <div class="elementMultiMapDiv" id="elementorMultiMap$instanceId"></div>
+    <div class="elementorMultiMapDivWrapper">
+      <div class="elementorMultiMapDiv" id="elementorMultiMap$instanceId"></div>
     </div>
     <script>
       if (!window.elementorMultiMapInit) {
