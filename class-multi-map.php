@@ -28,6 +28,11 @@ class MultiMap extends Widget_Base {
     return ['elementor_multi_map_init'];
   }
 
+  public function get_style_depends()
+  {
+    return ['elementor_multi_map_styles'];
+  }
+
   public function enqueueScripts()
   {
     // Only do this once!
@@ -56,6 +61,8 @@ class MultiMap extends Widget_Base {
   }
 EOT;
     wp_add_inline_script('elementor_multi_map_init', $includeGoogleMapsApiScript, 'before');
+
+    wp_register_style('elementor_multi_map_styles', plugins_url('elementor-multi-map/css/elementor-multi-map.css'));
   }
 
 
@@ -240,12 +247,7 @@ EOT;
     $addressHtmlEscaped = esc_html($address);
 
     $html = <<<EOT
-  <style>
-    .no-decoration-on-hover:hover {
-      text-decoration:none !important;
-    }
-  </style>
-  <div style='width:250px;'>
+  <div class="elementorMultiMapInfoWindowWrapper">
  EOT;
     if (!empty($urlEscaped)) {
       $html .= "<a class=\"no-decoration-on-hover\"  href=\"$urlEscaped\">";
@@ -253,15 +255,15 @@ EOT;
 
     if (!empty($imageEscaped)) {
       $html .= <<<EOT
-    <div style="position:relative;height:0;overflow:hidden;padding-top:calc(200 / 300 * 100%);">
-      <img style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position: center;" src="$imageEscaped" alt="$nameAttributeEscaped" />
+    <div class="elementorMultiMapInfoWindowImageWrapper" style="">
+      <img  class="elementorMultiMapInfoWindowImage" src="$imageEscaped" alt="$nameAttributeEscaped" />
     </div>
 EOT;
     }
 
     $html .= <<<EOT
-    <h1 style="font-family:'Outfit', sans-serif;font-size: 22px; font-weight: 600; color: rgb(0, 34, 51)">$nameHtmlEscaped</h1>                                                                                    
-    <h2 class="no-decoration-on-hover" style="font-family:'Outfit', sans-serif;font-size: 16px; font-weight: 400; color: rgb(0, 34, 51)">$addressHtmlEscaped</h2>                                                                                     
+    <p class="elementorMultiMapInfoWindowName">$nameHtmlEscaped</p>                                                                                    
+    <p class="elementorMultiMapInfoWindowAddress">$addressHtmlEscaped</p>                                                                                     
 EOT;
 
     if (!empty($urlEscaped)) {
@@ -278,26 +280,8 @@ EOT;
     echo <<<EOT
     <style>
     .elementMultiMapDivWrapper {
-      position:relative;
-      height:0;
       padding-top:calc($aspectRatioHeight / $aspectRatioWidth * 100%);
     }
-    .elementMultiMapDiv {
-      position:absolute;
-      top:0;
-      left:0;
-      width:100%;
-      height: 100%;
-    }
-    @media only screen and (max-width: 600px) {
-      /** On small screens override aspect ratio settings to make the map taller **/
-      .elementMultiMapDivWrapper {
-        position:relative;
-        height:0;
-        padding-top:calc(16 / 9 * 100%);
-      }
-    }
-    
     </style>
     <div class="elementMultiMapDivWrapper">
       <div class="elementMultiMapDiv" id="elementorMultiMap$instanceId"></div>

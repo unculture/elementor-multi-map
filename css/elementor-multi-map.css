@@ -1,0 +1,73 @@
+/** Map **/
+.elementMultiMapDivWrapper {
+    position:relative;
+    height:0;
+}
+.elementMultiMapDiv {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+}
+@media only screen and (max-width: 600px) {
+    /** On small screens override aspect ratio settings to make the map taller **/
+    .elementMultiMapDivWrapper {
+        position:relative;
+        height:0;
+        padding-top:calc(16 / 9 * 100%);
+    }
+}
+
+
+/** Info Window **/
+.no-decoration-on-hover:hover {
+    text-decoration:none !important;
+}
+.elementorMultiMapInfoWindowWrapper {
+    width: 250px;
+    max-width: 100%;
+    padding: 2px;
+}
+.elementorMultiMapInfoWindowImageWrapper {
+    position:relative;
+    height:0;
+    overflow:hidden;
+    padding-top:calc(200 / 300 * 100%);
+    margin-bottom: 10px;
+}
+.elementorMultiMapInfoWindowImage {
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position: center;
+}
+.elementorMultiMapInfoWindowName {
+    font-family:'Outfit', sans-serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: rgb(0, 34, 51);
+}
+.elementorMultiMapInfoWindowAddress {
+    font-family:'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: rgb(0, 34, 51);
+}
+@media only screen and (max-width: 400px) {
+    /** On small screens override aspect ratio settings to make the map taller **/
+    .elementMultiMapDivWrapper {
+        position:relative;
+        height:0;
+        padding-top:calc(16 / 9 * 100%);
+    }
+    .elementorMultiMapInfoWindowName {
+        font-size: 16px;
+    }
+    .elementorMultiMapInfoWindowAddress {
+        font-size: 14px;
+    }
+}
